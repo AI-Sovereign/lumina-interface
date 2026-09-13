@@ -3,22 +3,23 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #09090b;
-    --border: #e2e8f0;
-    --accent: #f1f5f9;
+  body {
+    @apply bg-corporate-50 text-corporate-900 transition-colors duration-300;
   }
-  .dark {
-    --background: #000000;
-    --foreground: #f8fafc;
-    --border: #27272a;
-    --accent: #18181b;
+  .dark body {
+    @apply bg-corporate-900 text-corporate-100;
   }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Feature 4: Subtle Edge-Lit Glows for Enterprise feel */
+.edge-lit-card {
+  @apply relative bg-white dark:bg-corporate-800 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden transition-all;
+}
+.edge-lit-card::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.dark .edge-lit-card:hover::before {
+  @apply opacity-100;
 }
