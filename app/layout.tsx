@@ -1,17 +1,21 @@
-import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
+import { ThemeProvider } from "../components/ThemeProvider";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AGI Systems Directorate",
-  description: "Lumina-1 Executive Core Dashboard",
+  title: "Lumina-1 | AGI Systems Directorate",
+  description: "Executive Core Architecture Front-end",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased font-sans">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <body className="antialiased selection:bg-accent-indigo selection:text-white">
+        <ThemeProvider>
           {children}
         </ThemeProvider>
       </body>
